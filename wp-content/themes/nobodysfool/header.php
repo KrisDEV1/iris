@@ -14,7 +14,7 @@
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
 
     <?php wp_head(); ?>
@@ -77,10 +77,14 @@
             <div style="clear: both;"></div>
         </div>
         <span class="toparea-btn minus" id="btn-expand"></span>
-        <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu"
-                    aria-expanded="false"></button>
-            <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_id' => 'primary-menu',)); ?>
+        <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button id="toggle" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></button>
+            <div id="popout" class="hidden-menu">
+                <div id="popout-heading">
+                    <button id="close" aria-controls="primary-menu" aria-expanded="false"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+                <?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+            </div>
         </nav><!-- #site-navigation -->
         <!--<div style="clear: both;"></div>-->
         <div class="logo-search">

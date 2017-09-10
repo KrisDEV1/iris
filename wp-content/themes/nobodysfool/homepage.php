@@ -15,14 +15,11 @@ get_header(); ?>
             <?php
             while ( have_posts() ) : the_post();
 
-               /* get_template_part( 'template-parts/content', 'homepage-banner' );
-                get_template_part( 'template-parts/content', 'homepage-copy-1' );
-                get_template_part( 'template-parts/content', 'homepage-tiles-1' );
-                get_template_part( 'template-parts/content', 'homepage-copy-2' );
-                get_template_part( 'template-parts/content', 'homepage-mailchimp' );
-                get_template_part( 'template-parts/content', 'comments' );
-*/
-            endwhile; // End of the loop. ?>
+                get_template_part( 'template-parts/content', 'slider1' );
+                get_template_part( 'template-parts/content', 'intro' );
+                get_template_part( 'template-parts/content', 'contact' );
+
+            endwhile; ?>
 
         </main><!-- #main -->
     </div><!-- #primary -->

@@ -125,9 +125,16 @@ function nobodysfool_scripts() {
 
     wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
 
+
+    wp_enqueue_style('nobodysfool-font', '//fonts.googleapis.com/css?family=Source+Sans+Pro|PT+Serif');
+
+  //  wp_enqueue_style('bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+
     wp_enqueue_script( 'jquery' );
 
-    wp_enqueue_script('actionac-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20151215', true);
+//    wp_enqueue_script( 'bootstrap-js', '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' );
+
+    wp_enqueue_script('nobodysfool-scripts', get_template_directory_uri() . '/js/scripts.js', array(), '20151215', true);
 
 	/*if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -135,6 +142,43 @@ function nobodysfool_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'nobodysfool_scripts' );
 
+
+// CUSTOM POST TYPES
+
+function create_cpt()
+{
+    register_post_type('home-services',
+        array(
+            'labels' => array(
+                'name' => __('Homepage Middle'),
+                'singular_name' => __('HomeMiddle')
+            ),
+            'public' => true,
+            'menu_icon' => 'dashicons-layout',
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'home-midddle'),
+            'supports' => array('title', 'thumbnail', 'editor', 'page-attributes')
+        )
+    );
+
+
+    register_post_type( 'slider',
+        array(
+            'labels' => array(
+                'name' => __( 'Slider' ),
+                'singular_name' => __( 'Slider' )
+            ),
+            'public' => true,
+            'menu_icon' => 'dashicons-images-alt2',
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'slider'),
+            'supports' => array('title', 'thumbnail', 'editor', 'page-attributes')
+        )
+    );
+
+}
+
+add_action( 'init', 'create_cpt' );
 
 function options_customize_register($wp_customize)
 {

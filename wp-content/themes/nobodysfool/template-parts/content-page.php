@@ -10,12 +10,13 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
+	<div class="custom-page">
+    <header class="entry-header">
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
         <?php //get_the_date('<span class="date">', '</span>');
         $author = get_the_author();
         $author_link = get_the_author_meta('email');?> <p class="entry-author"><?php echo $author;?>, <?php echo $author_link;?></p>
-        <?php $post_date = get_the_date( 'l, jS F Y' ); ?> <p class="entry-date"><?php echo $post_date;?></p>
+        <?php $post_date = get_the_date( 'l,jS F Y' ); ?> <p class="entry-date"><?php echo $post_date;?></p>
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
@@ -51,4 +52,5 @@
 			?>
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
+    </div>
 </article><!-- #post-<?php the_ID(); ?> -->

@@ -17,11 +17,13 @@
 
     <div class="col-1-4">
         <div class="footer-about">
-            <h3>About Us</h3>
-            <img src="<?php echo get_template_directory_uri(); ?>/img/215-90.jpg" alt="215-90">
+            <?php query_posts('pagename=about-us'); ?>
+            <?php while (have_posts()) : the_post(); ?>
+            <h3><?php the_title(); ?></h3>
+            <div class="image-with-border"><?php the_post_thumbnail(); ?> </div>
             <div class="footer-about-content">
-                <?php query_posts('pagename=about-us'); ?>
-                <?php while (have_posts()) : the_post(); ?>
+                <?php// query_posts('pagename=about-us'); ?>
+                <?php //while (have_posts()) : the_post(); ?>
                     <?php
                     global $more;
                     $temp = $more;
@@ -29,7 +31,7 @@
                     echo '<div class="giveaway-excerpt"><p>' . get_the_content('Read More') . '</p></div>';
                     $more = $temp;
                     ?>
-                <?php endwhile; // end of the loop. ?>
+                <?php endwhile; ?>
             </div>
         </div>
     </div>
